@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Listing } from '../types';
+import { ListingsService } from '../listings.service';
 
 @Component({
   selector: 'app-listing-page',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listing-page.component.css']
 })
 export class ListingPageComponent implements OnInit {
-
-  constructor() { }
+  listings: Listing[] = [];
+  constructor(
+    private listingsService : ListingsService
+  ) { }
 
   ngOnInit(): void {
+    this.listingsService.getListings()
+      .subscribe(listings => this.listings = listings);
   }
 
 }
