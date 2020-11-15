@@ -12,4 +12,8 @@ export class NewListingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(): void {
+    alert('New');
+  }
+
 }
