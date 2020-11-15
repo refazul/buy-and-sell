@@ -49,7 +49,14 @@ export class ListingsService {
   createListing(name: string, description: string, price: number): Observable<Listing> {
     return this.http.post<Listing>(
       `/api/listings`,
-      { name, description, price},
+      { name, description, price },
+      httpOptions
+    );
+  }
+  editListing(id: string, name: string, description: string, price: number): Observable<Listing> {
+    return this.http.post<Listing>(
+      `/api/listings/${id}`,
+      { name, description, price },
       httpOptions
     );
   }

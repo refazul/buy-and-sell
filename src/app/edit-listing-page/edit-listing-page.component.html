@@ -1,7 +1,7 @@
 <div class="content-box">
     <h1>Edit Listing</h1>
     <app-listing-data-form
-        (onSubmit)="onSubmit()"
+        (onSubmit)="onSubmit($event)"
         [currentName]="listing.name"
         [currentDescription]="listing.description"
         [currentPrice]="listing.price"

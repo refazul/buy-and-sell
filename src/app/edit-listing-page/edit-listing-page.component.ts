@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListingsService } from '../listings.service';
 import { Listing } from '../types';
 
@@ -9,10 +9,11 @@ import { Listing } from '../types';
   styleUrls: ['./edit-listing-page.component.css']
 })
 export class EditListingPageComponent implements OnInit {
-  listing: Listing | undefined;
+  listing: Listing = { id: '', name: '', description: '', price: 0, views: 0 };
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private listingsService: ListingsService
   ) { }
 
@@ -24,7 +25,13 @@ export class EditListingPageComponent implements OnInit {
       });
   }
 
-  onSubmit(): void {
-    alert('Edit');
+  onSubmit(listing: Listing): void {
+    const name = listing.name;
+    const description = listing.description;
+    const price = listing.price;
+    this.listingsService.editListing(this.listing.id, name, description, price)
+      .subscribe(() => {
+        this.router.navigateByUrl('/my-listings');
+      });
   }
 }

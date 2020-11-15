@@ -10,13 +10,13 @@ export class ListingDataFormComponent implements OnInit {
   @Input() buttonText = '';
   @Input() currentName = '';
   @Input() currentDescription = '';
-  @Input() currentPrice = '';
+  @Input() currentPrice = 0;
 
   @Output() onSubmit = new EventEmitter<Listing>();
 
   name: string = '';
   description: string = '';
-  price: string = '';  
+  price: number = 0;
 
   constructor() { }
 
